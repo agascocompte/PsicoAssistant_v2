@@ -11,6 +11,29 @@
     <tomcat.version>8.5.23</tomcat.version>
   </properties>
   <dependencies>
+      <!-- Gson -->
+
+
+      <!-- DialogFlow -->
+      <dependency>
+          <groupId>com.google.cloud</groupId>
+          <artifactId>google-cloud-dialogflow</artifactId>
+          <version>0.46.0-alpha</version>
+      </dependency>
+
+      <!-- Logger -->
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>1.7.25</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-simple</artifactId>
+          <version>1.7.25</version>
+      </dependency>
+
     <dependency>
         <groupId>org.apache.tomcat.embed</groupId>
         <artifactId>tomcat-embed-core</artifactId>
