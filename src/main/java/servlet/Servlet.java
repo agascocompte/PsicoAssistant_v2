@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-        name = "MyServlet", 
+        name = "webhook",
         urlPatterns = {"/webhook"}
     )
 public class Servlet extends HttpServlet {
@@ -31,11 +31,12 @@ public class Servlet extends HttpServlet {
         RequestBridge request = gson.fromJson(req.getReader(), RequestBridge.class);
 
         logger.info(gson.toJson(request));
+        logger.info("Entro aquí");
 
-        ServletOutputStream out = resp.getOutputStream();
+        /*ServletOutputStream out = resp.getOutputStream();
         out.write("hello heroku".getBytes());
         out.flush();
-        out.close();
+        out.close();*/
     }
     
 }
