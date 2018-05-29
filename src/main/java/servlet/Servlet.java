@@ -33,10 +33,10 @@ public class Servlet extends HttpServlet {
         logger.info(gson.toJson(request));
         logger.info("Entro aquí");
 
-        /*ServletOutputStream out = resp.getOutputStream();
-        out.write("hello heroku".getBytes());
+        ServletOutputStream out = resp.getOutputStream();
+        out.write(request.toString().getBytes());
         out.flush();
-        out.close();*/
+        out.close();
     }
     
 }
