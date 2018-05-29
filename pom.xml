@@ -11,9 +11,6 @@
     <tomcat.version>8.5.23</tomcat.version>
   </properties>
   <dependencies>
-      <!-- Gson -->
-
-
       <!-- DialogFlow -->
       <dependency>
           <groupId>com.google.cloud</groupId>
@@ -59,6 +56,62 @@
         <artifactId>tomcat-jsp-api</artifactId>
         <version>${tomcat.version}</version>
     </dependency>
+
+      <dependency>
+          <groupId>io.opencensus</groupId>
+          <artifactId>opencensus-api</artifactId>
+          <version>0.12.3</version>
+      </dependency>
+
+      <dependency>
+          <groupId>io.grpc</groupId>
+          <artifactId>grpc-core</artifactId>
+          <version>${grpc.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>io.grpc</groupId>
+          <artifactId>grpc-netty</artifactId>
+          <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>io.grpc</groupId>
+          <artifactId>grpc-netty-shaded</artifactId>
+          <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>io.grpc</groupId>
+          <artifactId>grpc-stub</artifactId>
+          <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>io.grpc</groupId>
+          <artifactId>grpc-auth</artifactId>
+          <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>io.grpc</groupId>
+          <artifactId>grpc-protobuf</artifactId>
+          <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>io.grpc</groupId>
+          <artifactId>grpc-context</artifactId>
+          <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>io.grpc</groupId>
+          <artifactId>grpc-testing</artifactId>
+          <version>${grpc.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.google.code.findbugs</groupId>
+          <artifactId>jsr305</artifactId>
+          <version>3.0.0</version>
+          <scope>test</scope>
+      </dependency>
+
   </dependencies>
   <build>
     <finalName>embeddedTomcatSample</finalName>

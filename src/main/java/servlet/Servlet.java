@@ -36,10 +36,11 @@ public class Servlet extends HttpServlet {
         logger.info("Entro aquí");
         System.out.println(gson.toJson(request));
 
+        WebhookResponse webhookResponse = WebhookResponse.newBuilder().build(); 
+
         ServletOutputStream out = resp.getOutputStream();
-        out.write(gson.toJson(request).getBytes());
+        out.write(gson.toJson(webhookResponse).getBytes());
         out.flush();
         out.close();
     }
-    
 }
