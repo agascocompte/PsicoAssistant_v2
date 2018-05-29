@@ -34,7 +34,7 @@ public class Servlet extends HttpServlet {
         logger.info("Entro aquí");
 
         ServletOutputStream out = resp.getOutputStream();
-        out.write(request.toString().getBytes());
+        out.write(gson.toJson(request).getBytes());
         out.flush();
         out.close();
     }
