@@ -1,5 +1,6 @@
 package servlet;
 
+import com.google.cloud.dialogflow.v2.WebhookResponse;
 import com.google.gson.Gson;
 import model.RequestBridge;
 import org.slf4j.Logger;
@@ -34,8 +35,15 @@ public class Servlet extends HttpServlet {
         logger.info("Entro aquí");
         System.out.println(gson.toJson(request));
 
+        WebhookResponse response = WebhookResponse.newBuilder()
+                .addAllFulfillmentMessages(request.getQueryResult().getFulfillmentMessages())
+                .addAllOutputContexts(request.getQueryResult().getOutputContexts())
+                .build();
+
+
+
         ServletOutputStream out = resp.getOutputStream();
-        out.write(gson.toJson(request).getBytes());
+        out.write(gson.toJson(response).getBytes());
         out.flush();
         out.close();
     }
