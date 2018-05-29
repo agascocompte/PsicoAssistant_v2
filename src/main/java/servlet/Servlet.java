@@ -39,7 +39,7 @@ public class Servlet extends HttpServlet {
         WebhookResponse webhookResponse = WebhookResponse.newBuilder().build();
 
         ServletOutputStream out = resp.getOutputStream();
-        out.write(gson.toJson(webhookResponse).getBytes());
+        webhookResponse.writeTo(out);
         out.flush();
         out.close();
     }
