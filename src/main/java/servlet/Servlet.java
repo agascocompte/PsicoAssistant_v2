@@ -69,83 +69,14 @@ public class Servlet extends HttpServlet {
                 '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}}";
 
-
-        /*String fulfillment = "";
-        BufferedReader reader = new BufferedReader(new FileReader("resources/fulfillment.txt"));
-        String line = "";
-        while ((line = reader.readLine()) != null ) {
-            fulfillment += line;
-        }*/
-
-
-        WebhookResponse response = WebhookResponse.getDefaultInstance();
-
-        resp.setCharacterEncoding("utf-8");
         resp.setContentType("application/json");
-
+        resp.setCharacterEncoding("utf-8");
+        resp.setStatus(HttpServletResponse.SC_OK);
         ServletOutputStream out = resp.getOutputStream();
         out.write(answer.getBytes());
-        gson.toJson(out, resp.getWriter());
-
         out.flush();
         out.close();
+        resp.getWriter().close();
     }
 }
 
-/*
-{
-"fulfillmentText": "This is a text response",
-"fulfillmentMessages": [
-  {
-    "card": {
-      "title": "card title",
-      "subtitle": "card text",
-      "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
-      "buttons": [
-        {
-          "text": "button text",
-          "postback": "https://assistant.google.com/"
-        }
-      ]
-    }
-  }
-],
-"source": "example.com",
-"payload": {
-  "google": {
-    "expectUserResponse": true,
-    "richResponse": {
-      "items": [
-        {
-          "simpleResponse": {
-            "textToSpeech": "this is a simple response"
-          }
-        }
-      ]
-    }
-  },
-  "facebook": {
-    "text": "Hello, Facebook!"
-  },
-  "slack": {
-    "text": "This is a text response for Slack."
-  }
-},
-"outputContexts": [
-  {
-    "name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
-    "lifespanCount": 5,
-    "parameters": {
-      "param": "param value"
-    }
-  }
-],
-"followupEventInput": {
-  "name": "event name",
-  "languageCode": "en-US",
-  "parameters": {
-    "param": "param value"
-  }
-}
-
- */
