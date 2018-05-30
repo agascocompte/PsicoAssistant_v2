@@ -73,12 +73,12 @@ public class Servlet extends HttpServlet {
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}";
 
 
-        String fulfillment = "";
+        /*String fulfillment = "";
         BufferedReader reader = new BufferedReader(new FileReader("resources/fulfillment.txt"));
         String line = "";
         while ((line = reader.readLine()) != null ) {
             fulfillment += line;
-        }
+        }*/
 
         WebhookResponse webhookResponse = WebhookResponse.newBuilder().
                 setFulfillmentText("ARGH").
