@@ -7,6 +7,8 @@ import model.RequestBridge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -36,7 +38,7 @@ public class Servlet extends HttpServlet {
         logger.info("Entro aquí");
         System.out.println(gson.toJson(request));
 
-        String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
+        /*String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
                 '"' + "fulfillmentMessages" + '"' + ": [" +
                 "{" +
                 '"' + "card" + '"' + ":{" +
@@ -69,13 +71,21 @@ public class Servlet extends HttpServlet {
                 '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
                 '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}";
+        */
+
+        String fulfillment = "";
+        BufferedReader reader = new BufferedReader(new FileReader("resources/fulfillment.txt"));
+        String line = "";
+        while ((line = reader.readLine()) != null ) {
+            fulfillment += line;
+        }
 
         WebhookResponse webhookResponse = WebhookResponse.newBuilder().
                 setFulfillmentText("ARGH").
                 build();
 
         ServletOutputStream out = resp.getOutputStream();
-        out.write(gson.toJson(answer).getBytes());
+        out.write(gson.toJson(fulfillment).getBytes());
         out.flush();
         out.close();
     }
