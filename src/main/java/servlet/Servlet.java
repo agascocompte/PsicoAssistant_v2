@@ -69,15 +69,15 @@ public class Servlet extends HttpServlet {
                 '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}}";
 
-                
+
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
-        resp.setStatus(HttpServletResponse.SC_OK);
+
         ServletOutputStream out = resp.getOutputStream();
         out.write(answer.getBytes());
         out.flush();
         out.close();
-        resp.getWriter().close();
+
     }
 }
 
