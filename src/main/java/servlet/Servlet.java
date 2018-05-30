@@ -54,7 +54,7 @@ public class Servlet extends HttpServlet {
                 '"' + "google" + '"' + ":" + "{" +
                 '"' + "expectUserResponse" + '"' + ":" + "true" + "," +
                 '"' + "richResponse" + '"' + ":" + "{" +
-                '"' + "items" + '"' + "[{" +
+                '"' + "items" + '"' + ":" + "[{" +
                 '"' + "simpleResponse" + '"' + ":{" +
                 '"' + "textToSpeech" + '"' + ":" + '"' + "this is a simple response" + '"' + "}}]}}," +
                 '"' + "facebook" + '"' + ":{" +
