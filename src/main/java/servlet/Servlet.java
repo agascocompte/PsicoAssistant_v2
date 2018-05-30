@@ -80,7 +80,9 @@ public class Servlet extends HttpServlet {
             fulfillment += line;
         }*/
 
-        WebhookResponse webhookResponse = WebhookResponse.parseFrom(answer.getBytes());
+        WebhookResponse webhookResponse = WebhookResponse.newBuilder()
+                .setFulfillmentText("hola")
+                .build();
 
         ServletOutputStream out = resp.getOutputStream();
         out.write(webhookResponse.toByteArray());
