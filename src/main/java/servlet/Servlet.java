@@ -82,8 +82,9 @@ public class Servlet extends HttpServlet {
 
 
         //WebhookResponse response = WebhookResponse.getDefaultInstance();
-        
+
         resp.setHeader("Content-Type", "application/json");
+        resp.setContentType("application/json");
         ServletOutputStream out = resp.getOutputStream();
         out.write(answer.getBytes());
         out.flush();
