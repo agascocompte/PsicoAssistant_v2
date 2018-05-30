@@ -38,7 +38,7 @@ public class Servlet extends HttpServlet {
         logger.info("Entro aquí");
         System.out.println(gson.toJson(request));
 
-        /*String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
+        String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
                 '"' + "fulfillmentMessages" + '"' + ": [" +
                 "{" +
                 '"' + "card" + '"' + ":{" +
@@ -71,7 +71,7 @@ public class Servlet extends HttpServlet {
                 '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
                 '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}";
-        */
+
 
         String fulfillment = "";
         BufferedReader reader = new BufferedReader(new FileReader("resources/fulfillment.txt"));
@@ -85,7 +85,7 @@ public class Servlet extends HttpServlet {
                 build();
 
         ServletOutputStream out = resp.getOutputStream();
-        out.write(gson.toJson(fulfillment).getBytes());
+        out.write(answer.getBytes());
         out.flush();
         out.close();
     }
