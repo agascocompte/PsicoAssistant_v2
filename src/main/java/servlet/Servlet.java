@@ -34,9 +34,6 @@ public class Servlet extends HttpServlet {
         Gson gson = new Gson();
         RequestBridge request = gson.fromJson(req.getReader(), RequestBridge.class);
 
-        logger.info(gson.toJson(request));
-        logger.info("Entro aquí");
-        System.out.println(gson.toJson(request));
 
         String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
                 '"' + "fulfillmentMessages" + '"' + ": [" +
@@ -81,12 +78,15 @@ public class Servlet extends HttpServlet {
         }*/
 
 
-        //WebhookResponse response = WebhookResponse.getDefaultInstance();
+        WebhookResponse response = WebhookResponse.getDefaultInstance();
 
-        resp.setHeader("Content-Type", "application/json");
+        resp.setCharacterEncoding("utf-8");
         resp.setContentType("application/json");
+
         ServletOutputStream out = resp.getOutputStream();
         out.write(answer.getBytes());
+        gson.toJson(out, resp.getWriter());
+
         out.flush();
         out.close();
     }
