@@ -51,24 +51,24 @@ public class Servlet extends HttpServlet {
                     '"' + "postback" + '"' + ":" + '"' + "https://assistant.google.com/" + '"' + "}]}}]," +
                 '"' + "source" + '"' + ":" + '"' + "example.com" + '"' + "," +
                 '"' + "payload" + '"' + ":" + "{" +
-                '"' + "google" + '"' + ":" + "{" +
-                '"' + "expectUserResponse" + '"' + ":" + "true" + "," +
-                '"' + "richResponse" + '"' + ":" + "{" +
-                '"' + "items" + '"' + ":" + "[{" +
-                '"' + "simpleResponse" + '"' + ":{" +
-                '"' + "textToSpeech" + '"' + ":" + '"' + "this is a simple response" + '"' + "}}]}}," +
+                    '"' + "google" + '"' + ":" + "{" +
+                        '"' + "expectUserResponse" + '"' + ":" + "true" + "," +
+                        '"' + "richResponse" + '"' + ":" + "{" +
+                        '"' + "items" + '"' + ":" + "[{" +
+                            '"' + "simpleResponse" + '"' + ":{" +
+                            '"' + "textToSpeech" + '"' + ":" + '"' + "this is a simple response" + '"' + "}}]}}," +
                 '"' + "facebook" + '"' + ":{" +
-                '"' + "text" + '"' + ":" + '"' + "Hello, Facebook!" + '"' + "}," +
+                    '"' + "text" + '"' + ":" + '"' + "Hello, Facebook!" + '"' + "}," +
                 '"' + "slack" + '"' + ":{" +
-                '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
+                    '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
                 '"' + "outputContexts" + '"' + ":[{" +
-                '"' + "name" + '"' + ":" + '"' + "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name" + '"' + "," +
-                '"' + "lifespanCount" + '"' + ":" + "5" + "," +
-                '"' + "parameters" + '"' + ":{" +
+                    '"' + "name" + '"' + ":" + '"' + "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name" + '"' + "," +
+                    '"' + "lifespanCount" + '"' + ":" + "5" + "," +
+                    '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}]," +
-                '"' + "followupEventInput" + '"' + ":{" +
-                '"' + "name" + '"' + ":" + '"' + "eventName" + '"' + "," +
-                '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
+                    '"' + "followupEventInput" + '"' + ":{" +
+                         '"' + "name" + '"' + ":" + '"' + "eventName" + '"' + "," +
+                        '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
                 '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}}";
 
@@ -79,13 +79,10 @@ public class Servlet extends HttpServlet {
         while ((line = reader.readLine()) != null ) {
             fulfillment += line;
         }*/
-
-        WebhookResponse webhookResponse = WebhookResponse.newBuilder()
-                .setFulfillmentText("hola")
-                .build();
-
+        resp.setHeader("Content-Type", "application/json");
         ServletOutputStream out = resp.getOutputStream();
-        out.write(webhookResponse.toByteArray());
+
+        out.write(answer.getBytes());
         out.flush();
         out.close();
     }
