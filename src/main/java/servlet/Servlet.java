@@ -70,7 +70,7 @@ public class Servlet extends HttpServlet {
                 '"' + "name" + '"' + ":" + '"' + "eventName" + '"' + "," +
                 '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
                 '"' + "parameters" + '"' + ":{" +
-                '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}";
+                '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}}";
 
 
         /*String fulfillment = "";
