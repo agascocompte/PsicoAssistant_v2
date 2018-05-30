@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "v2assistant-203609",
+  "private_key_id": "0b77f3b513b478782a118f60d855efef8a9a5385",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDUWlnGuw+eB32u\nrkHscYAd1Fmfrpxw1A8K4+DfNVL1Wi1udYvSQIl4r7Rtuax649eo+MO0vIUonS12\nXN/qJFHt6Eu4ycPi1Fom4JtKQ4pOhibTR1X/8hGXBYIND6pxCThGIzAyOszv58Vm\nRJBb5dOfmGmHbWiFY/nzzpS9ww8s9v6nkOHXyvLrMjS6FSQDIc9mus+Pg3/dUHsK\nAQgjAzDm6SNFBKhzv7xWY7LQ2gQ2H0oPqzMo2KVAFPlzrNxnfi5xHmnqXBKMu2H7\ndLWED9bVsMrgGvqHJ6Mnu4lIAPTvQwdGRvppwOyV5S6iM92woxU4GBketmta521e\nGps4UXC/AgMBAAECggEACbjjQFqDIgiUxAEdao5dv7/fpJRxfCbxU13Qh1ehJzOM\nPfDqyGMFCD3/JEDqeSviTU2qZCV3cT8U/ETPSaCFEb/fa6PtMH7pa7s/0NwbwnGY\n6HZtJQ03qfLqG9/6PTefWHK2+62+gUNawc5kz5hLopRvTHCBZw4HPRbZr4B1Ouk0\nsPmXL767h6prFjBehOe9R7rv/LAeXSBaSYWBMVdOESpmFWQ3OgzELHIX/Db3pz2J\nIXoC2vVNWrQxvhu8yxGFp1h5/KJ80CLx8px0IZGnpiCxZQ4oSutvosOaVhZpST3v\n4rtMKegp8x7yNf1wEQyt6KFJKg6rV1csTof8CsPiiQKBgQDprM0kA1LLinSGhpZ6\n868c/ei6JcuciJ4rdUxPggSy/3SgkxxWssGIugFqTom+Qzl9aTOn6O2wK+wpWh31\nNiOn0BesBmy949H3Z0gjCUPvfY1xqSTBpQ178xyaLTDRWgeALl0KBw0GVuzoSiXl\nqhhANKroooWQHqYRyNNBie86lwKBgQDopA5stJwMuW9ALEoAML47Lbf1G+X0tw0O\nG/RZ2j5Rf38ndsxo8CHjemdzcN6unh3zTHxg+gcr2mTsvcGtJlIPcxIlamZl4jll\nU65oPqovHcApwY7p6e6Xz0i14cx7JmJLWwtZsc7qRjsYEFTHZQ4OcwzL3VdCNvbc\nkXUITuAIGQKBgQCLuRK0rPQN1s0UP1etTxZvPHezDrRv9dS14Z5ukCzlJxCCj1RL\nlvlYGviLq0h7ptCyZ3xGs2WkiK7ejw8It4WcazYsW28cICRFTdF5eanQgv9Xbi8X\nRu0IJ3b7zXe6Rp3jjFV/kHW+S62+u89rQ0ja42MqVTuN0HW2fqGrN6H/IwKBgQDF\nceekLy16Ry+6oVw1CSmLBGRqrUDgDzQPU35xfB8EAFek4Njf/15juJFwks0MGrqE\nsdemXs4TVAnwO6TTFgDzh9BQ3RsHQZdA/mK5quW5k2BykAqBUL/lLFIju/5WTt+B\n4UWi3JwmjXC+Ha42hPgHH3Iu3C6gzhF6ZiGT6Y2OkQKBgHwZXvOXoQEaBnshCmEg\n1Hxf+htVCAmSvLrtKiwgRhN1woshagKGEi3XQNhTRMqiFw33QcCp576Ke/oYR+ec\n/R3zaShaWlx+M1Bxy+vvzNs0tmSiFfa/dAyKkOEbb5D76ywu6HIjghBrBKIUwtMj\nEf15aiUe4JO4yeX/VWylN6CI\n-----END PRIVATE KEY-----\n",
+  "client_email": "psico-assistant-v2@v2assistant-203609.iam.gserviceaccount.com",
+  "client_id": "102605135065346947175",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/psico-assistant-v2%40v2assistant-203609.iam.gserviceaccount.com"
+}
