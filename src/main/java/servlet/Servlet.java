@@ -36,12 +36,105 @@ public class Servlet extends HttpServlet {
         logger.info("Entro aquí");
         System.out.println(gson.toJson(request));
 
+        String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
+                '"' + "fulfillmentMessages" + '"' + ": [" +
+                "{" +
+                '"' + "card" + '"' + ":{" +
+                '"' + "title" + '"' + ":" + '"' + "card title" + '"' + "," +
+                '"' + "subtitle" + '"' + ":" + '"' + "card text" + '"' + "," +
+                '"' + "imageUri" + '"' + ":" + '"' + "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png" + '"' + "," +
+                '"' + "buttons" + '"' + ":[" +
+                "{" +
+                    '"' + "text" + '"' + ":" + '"' + "button text" + '"' + "," +
+                    '"' + "postback" + '"' + ":" + '"' + "https://assistant.google.com/" + '"' + "}]}}]," +
+                '"' + "source" + '"' + ":" + '"' + "example.com" + '"' + "," +
+                '"' + "payload" + '"' + ":" + "{" +
+                '"' + "google" + '"' + ":" + "{" +
+                '"' + "expectUserResponse" + '"' + ":" + "true" + "," +
+                '"' + "richResponse" + '"' + ":" + "{" +
+                '"' + "items" + '"' + "[{" +
+                '"' + "simpleResponse" + '"' + ":{" +
+                '"' + "textToSpeech" + '"' + ":" + '"' + "this is a simple response" + '"' + "}}]}}," +
+                '"' + "facebook" + '"' + ":{" +
+                '"' + "text" + '"' + ":" + '"' + "Hello, Facebook!" + '"' + "}," +
+                '"' + "slack" + '"' + ":{" +
+                '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
+                '"' + "outputContexts" + '"' + ":[{" +
+                '"' + "name" + '"' + ":" + '"' + "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name" + '"' + "," +
+                '"' + "lifespanCount" + '"' + ":" + "5" + "," +
+                '"' + "parameters" + '"' + ":{" +
+                '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}]," +
+                '"' + "followupEventInput" + '"' + ":{" +
+                '"' + "name" + '"' + ":" + '"' + "eventName" + '"' + "," +
+                '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
+                '"' + "parameters" + '"' + ":{" +
+                '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}";
+
         WebhookResponse webhookResponse = WebhookResponse.newBuilder().
                 setFulfillmentText("ARGH").
                 build();
+
         ServletOutputStream out = resp.getOutputStream();
-        out.write(gson.toJson(webhookResponse).getBytes());
+        out.write(gson.toJson(answer).getBytes());
         out.flush();
         out.close();
     }
 }
+
+/*
+{
+"fulfillmentText": "This is a text response",
+"fulfillmentMessages": [
+  {
+    "card": {
+      "title": "card title",
+      "subtitle": "card text",
+      "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
+      "buttons": [
+        {
+          "text": "button text",
+          "postback": "https://assistant.google.com/"
+        }
+      ]
+    }
+  }
+],
+"source": "example.com",
+"payload": {
+  "google": {
+    "expectUserResponse": true,
+    "richResponse": {
+      "items": [
+        {
+          "simpleResponse": {
+            "textToSpeech": "this is a simple response"
+          }
+        }
+      ]
+    }
+  },
+  "facebook": {
+    "text": "Hello, Facebook!"
+  },
+  "slack": {
+    "text": "This is a text response for Slack."
+  }
+},
+"outputContexts": [
+  {
+    "name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
+    "lifespanCount": 5,
+    "parameters": {
+      "param": "param value"
+    }
+  }
+],
+"followupEventInput": {
+  "name": "event name",
+  "languageCode": "en-US",
+  "parameters": {
+    "param": "param value"
+  }
+}
+
+ */
