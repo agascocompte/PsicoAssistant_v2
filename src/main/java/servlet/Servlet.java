@@ -79,12 +79,13 @@ public class Servlet extends HttpServlet {
         while ((line = reader.readLine()) != null ) {
             fulfillment += line;
         }*/
+
+
+        //WebhookResponse response = WebhookResponse.getDefaultInstance();
+        
         resp.setHeader("Content-Type", "application/json");
-
-        WebhookResponse response = WebhookResponse.getDefaultInstance();
-
         ServletOutputStream out = resp.getOutputStream();
-        out.write(response.toByteArray());
+        out.write(answer.getBytes());
         out.flush();
         out.close();
     }
