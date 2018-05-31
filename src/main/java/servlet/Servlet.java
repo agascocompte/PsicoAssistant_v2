@@ -1,6 +1,7 @@
 package servlet;
 
 import com.google.gson.Gson;
+import model.DFBean;
 import model.RequestBridge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,45 +75,13 @@ public class Servlet extends HttpServlet {
         out.flush();
         out.close();*/
 
-        String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
-                '"' + "fulfillmentMessages" + '"' + ": [" +
-                "{" +
-                '"' + "card" + '"' + ":{" +
-                '"' + "title" + '"' + ":" + '"' + "card title" + '"' + "," +
-                '"' + "subtitle" + '"' + ":" + '"' + "card text" + '"' + "," +
-                '"' + "imageUri" + '"' + ":" + '"' + "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png" + '"' + "," +
-                '"' + "buttons" + '"' + ":[" +
-                "{" +
-                '"' + "text" + '"' + ":" + '"' + "button text" + '"' + "," +
-                '"' + "postback" + '"' + ":" + '"' + "https://assistant.google.com/" + '"' + "}]}}]," +
-                '"' + "source" + '"' + ":" + '"' + "example.com" + '"' + "," +
-                '"' + "payload" + '"' + ":" + "{" +
-                '"' + "google" + '"' + ":" + "{" +
-                '"' + "expectUserResponse" + '"' + ":" + "true" + "," +
-                '"' + "richResponse" + '"' + ":" + "{" +
-                '"' + "items" + '"' + ":" + "[{" +
-                '"' + "simpleResponse" + '"' + ":{" +
-                '"' + "textToSpeech" + '"' + ":" + '"' + "this is a simple response" + '"' + "}}]}}," +
-                '"' + "facebook" + '"' + ":{" +
-                '"' + "text" + '"' + ":" + '"' + "Hello, Facebook!" + '"' + "}," +
-                '"' + "slack" + '"' + ":{" +
-                '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
-                '"' + "outputContexts" + '"' + ":[]," +
-                '"' + "followupEventInput" + '"' + ":{" +
-                '"' + "name" + '"' + ":" + '"' + "eventName" + '"' + "," +
-                '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
-                '"' + "parameters" + '"' + ":{" +
-                '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}}";
-
-
+        DFBean bean = new DFBean();
+        bean.setDispText("HOLA");
+        bean.setSpeech("Hello from webhook");
         Gson myGson = new Gson();
-        String json = myGson.toJson(answer);
+        String json = myGson.toJson(bean);
 
         resp.setContentType("application/json");
-        resp.setCharacterEncoding("utf-8");
-
-
-
         resp.getWriter().write(json);
     }
 }
