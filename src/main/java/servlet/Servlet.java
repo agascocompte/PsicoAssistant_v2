@@ -1,5 +1,7 @@
 package servlet;
 
+import com.google.api.client.json.Json;
+import com.google.cloud.dialogflow.v2.WebhookResponse;
 import com.google.gson.Gson;
 import model.RequestBridge;
 import org.slf4j.Logger;
@@ -38,6 +40,11 @@ public class Servlet extends HttpServlet {
                 '"' + "followupEventInput" + '"' + ":{}}";
 
 
+        WebhookResponse answer2 = WebhookResponse.newBuilder()
+                .setFulfillmentText("hey!")
+                .build();
+        String json = gson.toJson(answer2);
+
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
 
@@ -48,7 +55,8 @@ public class Servlet extends HttpServlet {
 
 
         resp.setContentType("application/json");
-        resp.getWriter().write(answer);
+        //resp.getWriter().write(answer);
+        resp.getWriter().write(json);
     }
 }
 
