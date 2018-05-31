@@ -31,30 +31,11 @@ public class Servlet extends HttpServlet {
 
 
         String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
-                '"' + "fulfillmentMessages" + '"' + ": [" +
-                "{" +
-                '"' + "card" + '"' + ":{" +
-                '"' + "title" + '"' + ":" + '"' + "card title" + '"' + "," +
-                '"' + "subtitle" + '"' + ":" + '"' + "card text" + '"' + "," +
-                '"' + "imageUri" + '"' + ":" + '"' + "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png" + '"' + "," +
-                '"' + "buttons" + '"' + ":[" +
-                "{" +
-                    '"' + "text" + '"' + ":" + '"' + "button text" + '"' + "," +
-                    '"' + "postback" + '"' + ":" + '"' + "https://assistant.google.com/" + '"' + "}]}}]," +
+                '"' + "fulfillmentMessages" + '"' + ": []," +
                 '"' + "source" + '"' + ":" + '"' + "example.com" + '"' + "," +
-                '"' + "payload" + '"' + ":" + "{" +
-                    '"' + "google" + '"' + ":" + "{" +
-                        '"' + "expectUserResponse" + '"' + ":" + "true" + "," +
-                        '"' + "richResponse" + '"' + ":" + "{" +
-                        '"' + "items" + '"' + ":" + "[{" +
-                            '"' + "simpleResponse" + '"' + ":{" +
-                            '"' + "textToSpeech" + '"' + ":" + '"' + "this is a simple response" + '"' + "}}]}}," +
-                '"' + "facebook" + '"' + ":{" +
-                    '"' + "text" + '"' + ":" + '"' + "Hello, Facebook!" + '"' + "}," +
-                '"' + "slack" + '"' + ":{" +
-                    '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
+                '"' + "payload" + '"' + ":" + "{}," +
                 '"' + "outputContexts" + '"' + ":[]," +
-                    '"' + "followupEventInput" + '"' + ":{}}";
+                '"' + "followupEventInput" + '"' + ":{}}";
 
 
         resp.setContentType("application/json");
