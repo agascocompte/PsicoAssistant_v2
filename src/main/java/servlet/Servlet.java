@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,38 +28,31 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-
+        // Read request
         Gson gson = new Gson();
         RequestBridge request = gson.fromJson(req.getReader(), RequestBridge.class);
 
 
-        String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
-                '"' + "fulfillmentMessages" + '"' + ": []," +
-                '"' + "source" + '"' + ":" + '"' + "example.com" + '"' + "," +
-                '"' + "payload" + '"' + ":" + "{}," +
-                '"' + "outputContexts" + '"' + ":[]," +
-                '"' + "followupEventInput" + '"' + ":{}}";
+
+        Map<String, Integer> valor = request.getQueryResult().getParameters();
 
 
-        //ResponseBridge = new ResponseBridge();
+
+
+        // Prepare response
         WebhookResponse response = WebhookResponse.newBuilder()
-                .setFulfillmentText("Hola")
+                .setFulfillmentText("El parámetro anterior es " + valor.get("any"))
                 .build();
 
         ResponseBridge bridge = new ResponseBridge();
         bridge.setFulfillmentText(response.getFulfillmentText());
 
+        String responseJson = gson.toJson(bridge);
 
-        String json = gson.toJson(bridge);
 
+        // Send response
         resp.setContentType("application/json");
-        resp.setCharacterEncoding("utf-8");
-
-
-
-        resp.setContentType("application/json");
-        //resp.getWriter().write(answer);
-        resp.getWriter().write(json);
+        resp.getWriter().write(responseJson);
     }
 }
 

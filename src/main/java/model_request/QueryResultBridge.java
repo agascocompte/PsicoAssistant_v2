@@ -1,11 +1,12 @@
 package model_request;
 
 import java.util.List;
+import java.util.Map;
 
 public class QueryResultBridge<T, U> {
     private String queryText;
     private String action;
-    private T parameters;
+    private Map<T, T> parameters;
     private boolean allRequiredParamsPresent;
     private String fulfillmentText;
     private List<FulfillmentMessages> fulfillmentMessages;
@@ -27,7 +28,7 @@ public class QueryResultBridge<T, U> {
         return action;
     }
 
-    public T getParameters() {
+    public Map<T, T> getParameters() {
         return parameters;
     }
 
