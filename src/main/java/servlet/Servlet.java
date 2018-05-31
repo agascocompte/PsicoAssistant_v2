@@ -31,7 +31,7 @@ public class Servlet extends HttpServlet {
         RequestBridge request = gson.fromJson(req.getReader(), RequestBridge.class);
 
 
-        String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
+        /*String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
                 '"' + "fulfillmentMessages" + '"' + ": [" +
                 "{" +
                 '"' + "card" + '"' + ":{" +
@@ -55,7 +55,7 @@ public class Servlet extends HttpServlet {
                 '"' + "slack" + '"' + ":{" +
                     '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
                 '"' + "outputContexts" + '"' + ":[{" +
-                    '"' + "name" + '"' + ":" + '"' + "projects/v2assistant-203609/agent/sessions/825413e9-2fb4-4179-8344-2650c360acff/contexts/context name" + '"' + "," +
+                    '"' + "name" + '"' + ":" + '"' + "projects/v2assistant-203609/agent/sessions/${SESSION_ID}/contexts/context name" + '"' + "," +
                     '"' + "lifespanCount" + '"' + ":" + "5" + "," +
                     '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}]," +
@@ -72,7 +72,48 @@ public class Servlet extends HttpServlet {
         ServletOutputStream out = resp.getOutputStream();
         out.write(answer.getBytes());
         out.flush();
-        out.close();
+        out.close();*/
+
+        String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
+                '"' + "fulfillmentMessages" + '"' + ": [" +
+                "{" +
+                '"' + "card" + '"' + ":{" +
+                '"' + "title" + '"' + ":" + '"' + "card title" + '"' + "," +
+                '"' + "subtitle" + '"' + ":" + '"' + "card text" + '"' + "," +
+                '"' + "imageUri" + '"' + ":" + '"' + "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png" + '"' + "," +
+                '"' + "buttons" + '"' + ":[" +
+                "{" +
+                '"' + "text" + '"' + ":" + '"' + "button text" + '"' + "," +
+                '"' + "postback" + '"' + ":" + '"' + "https://assistant.google.com/" + '"' + "}]}}]," +
+                '"' + "source" + '"' + ":" + '"' + "example.com" + '"' + "," +
+                '"' + "payload" + '"' + ":" + "{" +
+                '"' + "google" + '"' + ":" + "{" +
+                '"' + "expectUserResponse" + '"' + ":" + "true" + "," +
+                '"' + "richResponse" + '"' + ":" + "{" +
+                '"' + "items" + '"' + ":" + "[{" +
+                '"' + "simpleResponse" + '"' + ":{" +
+                '"' + "textToSpeech" + '"' + ":" + '"' + "this is a simple response" + '"' + "}}]}}," +
+                '"' + "facebook" + '"' + ":{" +
+                '"' + "text" + '"' + ":" + '"' + "Hello, Facebook!" + '"' + "}," +
+                '"' + "slack" + '"' + ":{" +
+                '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
+                '"' + "outputContexts" + '"' + ":[]," +
+                '"' + "followupEventInput" + '"' + ":{" +
+                '"' + "name" + '"' + ":" + '"' + "eventName" + '"' + "," +
+                '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
+                '"' + "parameters" + '"' + ":{" +
+                '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}}";
+
+
+        Gson myGson = new Gson();
+        String json = myGson.toJson(answer);
+
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("utf-8");
+
+
+
+        resp.getWriter().write(json);
     }
 }
 
