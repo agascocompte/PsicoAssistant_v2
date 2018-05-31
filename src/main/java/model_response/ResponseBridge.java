@@ -13,7 +13,7 @@ public class ResponseBridge {
     private List<Intent.Message> fulfillmentMessages;
     private String source;
     private Struct payload;
-    private List<Context> outputContext;
+    private List<Context> outputContexts;
     private EventInput followupEventInput;
 
     public ResponseBridge(WebhookResponse webhookResponse) {
@@ -21,7 +21,7 @@ public class ResponseBridge {
         fulfillmentMessages = webhookResponse.getFulfillmentMessagesList();
         source = webhookResponse.getSource();
         payload = webhookResponse.getPayload();
-        outputContext = webhookResponse.getOutputContextsList();
+        outputContexts = webhookResponse.getOutputContextsList();
         followupEventInput = webhookResponse.getFollowupEventInput();
     }
 }
