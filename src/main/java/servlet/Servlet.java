@@ -45,7 +45,8 @@ public class Servlet extends HttpServlet {
                 .setFulfillmentText("Hola")
                 .build();
 
-        ResponseBridge bridge = new ResponseBridge(response);
+        ResponseBridge bridge = new ResponseBridge();
+        bridge.setFulfillmentText(response.getFulfillmentText());
 
 
         String json = gson.toJson(bridge);
