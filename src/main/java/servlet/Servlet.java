@@ -54,11 +54,7 @@ public class Servlet extends HttpServlet {
                 '"' + "slack" + '"' + ":{" +
                     '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
                 '"' + "outputContexts" + '"' + ":[]," +
-                    '"' + "followupEventInput" + '"' + ":{" +
-                         '"' + "name" + '"' + ":" + '"' + "eventName" + '"' + "," +
-                        '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
-                '"' + "parameters" + '"' + ":{" +
-                '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}}";
+                    '"' + "followupEventInput" + '"' + ":{}}";
 
 
         resp.setContentType("application/json");
