@@ -32,7 +32,7 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String output = ""; 
+        String output = "";
 
         // Read request
         Gson gson = new Gson();
@@ -45,8 +45,9 @@ public class Servlet extends HttpServlet {
             output = "Tu puntuación final es de " + score;
         }
         else {
-            int lastInput = parameters.get("any");
-            boolean correctInput = Input.checkUserInput(lastInput);
+            //int lastInput = parameters.get("any");
+            //boolean correctInput = Input.checkUserInput(lastInput);
+            boolean correctInput = false;
             if (correctInput) {
                 // Enviar al siguiente intent
             }
