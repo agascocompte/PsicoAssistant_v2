@@ -45,9 +45,8 @@ public class Servlet extends HttpServlet {
             output = "Tu puntuación final es de " + score;
         }
         else {
-            //int lastInput = parameters.get("any");
-            //boolean correctInput = Input.checkUserInput(lastInput);
-            boolean correctInput = false;
+            String lastInput = String.valueOf(parameters.get("any"));
+            boolean correctInput = Input.checkUserInput(lastInput);
             if (correctInput) {
                 // Enviar al siguiente intent
             }

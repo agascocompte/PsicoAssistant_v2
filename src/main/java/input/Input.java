@@ -15,7 +15,7 @@ public class Input {
         return suma;
     }
 
-    public static boolean checkUserInput(int input) {
+    public static boolean checkUserInput(String input) {
         boolean isCorrectNumber = false;
 
 
