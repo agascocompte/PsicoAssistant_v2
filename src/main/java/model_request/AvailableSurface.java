@@ -1,11 +1,11 @@
-package model;
+package model_request;
 
 import java.util.List;
 
-public class Surface {
-    private List<Capability> capabilities;
+public class AvailableSurface {
+    List<Capability> capabilities;
 
-    public Surface() {
+    public AvailableSurface() {
         super();
     }
 

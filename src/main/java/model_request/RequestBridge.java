@@ -1,4 +1,4 @@
-package model;
+package model_request;
 
 // El primer genérico es para el campo "parameters" de "queryResult"
 // El segundo genérico es para el campo "parameters" de cada uno de los "outputContext"

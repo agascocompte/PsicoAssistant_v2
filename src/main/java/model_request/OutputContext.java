@@ -1,4 +1,4 @@
-package model;
+package model_request;
 
 public class OutputContext<U> {
     private String name;
