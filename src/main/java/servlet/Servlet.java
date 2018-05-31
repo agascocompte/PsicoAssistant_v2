@@ -2,12 +2,16 @@ package servlet;
 
 import com.google.cloud.dialogflow.v2.WebhookResponse;
 import com.google.gson.Gson;
+import input.Input;
 import model_request.RequestBridge;
 import model_response.ResponseBridge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -28,20 +32,32 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+        String output = "";
+
         // Read request
         Gson gson = new Gson();
         RequestBridge request = gson.fromJson(req.getReader(), RequestBridge.class);
 
+        Map<String, Integer> parameters = request.getQueryResult().getParameters();
 
-
-        Map<String, Integer> valor = request.getQueryResult().getParameters();
-
-
-
+        if (parameters.size() == 5) {
+            int score = Input.calculateScore(parameters);
+            output = "Tu puntuación final es de " + score;
+        }
+        else {
+            int lastInput = parameters.get("any");
+            boolean correctInput = Input.checkUserInput(lastInput);
+            if (correctInput) {
+                // Enviar al siguiente intent
+            }
+            else {
+                output = "Tu respuesta debe de ser un número entre 0 y 5, ambos incluidos.";
+            }
+        }
 
         // Prepare response
         WebhookResponse response = WebhookResponse.newBuilder()
-                .setFulfillmentText("El parámetro anterior es " + valor.get("any") + ". Además te puedo decir que hay " + valor.size() + " parámetros.")
+                .setFulfillmentText(output)
                 .build();
 
         ResponseBridge bridge = new ResponseBridge();
