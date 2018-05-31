@@ -41,7 +41,7 @@ public class Servlet extends HttpServlet {
 
         // Prepare response
         WebhookResponse response = WebhookResponse.newBuilder()
-                .setFulfillmentText("El parámetro anterior es " + valor.get("any"))
+                .setFulfillmentText("El parámetro anterior es " + valor.get("any") + ". Además te puedo decir que hay " + valor.size() + " parámetros.")
                 .build();
 
         ResponseBridge bridge = new ResponseBridge();
