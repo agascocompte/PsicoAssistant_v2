@@ -55,7 +55,7 @@ public class Servlet extends HttpServlet {
                 '"' + "slack" + '"' + ":{" +
                     '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
                 '"' + "outputContexts" + '"' + ":[{" +
-                    '"' + "name" + '"' + ":" + '"' + "projects/${v2assistant-203609}/agent/sessions/${SESSION_ID}/contexts/context name" + '"' + "," +
+                    '"' + "name" + '"' + ":" + '"' + "projects/v2assistant-203609/agent/sessions/825413e9-2fb4-4179-8344-2650c360acff/contexts/context name" + '"' + "," +
                     '"' + "lifespanCount" + '"' + ":" + "5" + "," +
                     '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}]," +
