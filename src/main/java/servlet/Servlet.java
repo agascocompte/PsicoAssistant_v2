@@ -1,14 +1,10 @@
 package servlet;
 
-import com.google.cloud.dialogflow.v2.WebhookProto;
-import com.google.cloud.dialogflow.v2.WebhookResponse;
 import com.google.gson.Gson;
 import model.RequestBridge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -59,7 +55,7 @@ public class Servlet extends HttpServlet {
                 '"' + "slack" + '"' + ":{" +
                     '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
                 '"' + "outputContexts" + '"' + ":[{" +
-                    '"' + "name" + '"' + ":" + '"' + "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name" + '"' + "," +
+                    '"' + "name" + '"' + ":" + '"' + "projects/${v2assistant-203609}/agent/sessions/${SESSION_ID}/contexts/context name" + '"' + "," +
                     '"' + "lifespanCount" + '"' + ":" + "5" + "," +
                     '"' + "parameters" + '"' + ":{" +
                 '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}]," +
@@ -77,7 +73,6 @@ public class Servlet extends HttpServlet {
         out.write(answer.getBytes());
         out.flush();
         out.close();
-
     }
 }
 
