@@ -32,7 +32,7 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String output = "";
+        String output = ""; 
 
         // Read request
         Gson gson = new Gson();
