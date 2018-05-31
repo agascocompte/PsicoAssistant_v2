@@ -43,6 +43,7 @@ public class Servlet extends HttpServlet {
         WebhookResponse answer2 = WebhookResponse.newBuilder()
                 .setFulfillmentText("hey!")
                 .build();
+
         String json = gson.toJson(answer2);
 
         resp.setContentType("application/json");
@@ -56,7 +57,7 @@ public class Servlet extends HttpServlet {
 
         resp.setContentType("application/json");
         //resp.getWriter().write(answer);
-        resp.getWriter().write(json);
+        answer2.writeTo(resp.getOutputStream());
     }
 }
 
