@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -54,11 +53,7 @@ public class Servlet extends HttpServlet {
                     '"' + "text" + '"' + ":" + '"' + "Hello, Facebook!" + '"' + "}," +
                 '"' + "slack" + '"' + ":{" +
                     '"' + "text" + '"' + ":" + '"' + "This is a simple response for Slack." + '"' + "}}," +
-                '"' + "outputContexts" + '"' + ":[{" +
-                    '"' + "name" + '"' + ":" + '"' + "projects/v2assistant-203609/agent/sessions/${SESSION_ID}/contexts/context name" + '"' + "," +
-                    '"' + "lifespanCount" + '"' + ":" + "5" + "," +
-                    '"' + "parameters" + '"' + ":{" +
-                '"' + "param" + '"' + ":" + '"' + "paramValue" + '"' + "}}]," +
+                '"' + "outputContexts" + '"' + ":[]," +
                     '"' + "followupEventInput" + '"' + ":{" +
                          '"' + "name" + '"' + ":" + '"' + "eventName" + '"' + "," +
                         '"' + "languageCode" + '"' + ":" + '"' + "en-US" + '"' + "," +
