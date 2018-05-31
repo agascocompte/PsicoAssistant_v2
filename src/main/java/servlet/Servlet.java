@@ -1,7 +1,6 @@
 package servlet;
 
 import com.google.gson.Gson;
-import model.DFBean;
 import model.RequestBridge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +31,7 @@ public class Servlet extends HttpServlet {
         RequestBridge request = gson.fromJson(req.getReader(), RequestBridge.class);
 
 
-        /*String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
+        String answer = "{" + '"' + "fulfillmentText" + '"' + ":" + '"' + "This is a text response" + '"' + "," +
                 '"' + "fulfillmentMessages" + '"' + ": [" +
                 "{" +
                 '"' + "card" + '"' + ":{" +
@@ -70,19 +69,14 @@ public class Servlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
 
-        ServletOutputStream out = resp.getOutputStream();
+        /*ServletOutputStream out = resp.getOutputStream();
         out.write(answer.getBytes());
         out.flush();
         out.close();*/
 
-        DFBean bean = new DFBean();
-        bean.setDispText("HOLA");
-        bean.setSpeech("Hello from webhook");
-        Gson myGson = new Gson();
-        String json = myGson.toJson(bean);
 
         resp.setContentType("application/json");
-        resp.getWriter().write(json);
+        resp.getWriter().write(answer);
     }
 }
 
