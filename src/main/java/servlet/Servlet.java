@@ -48,7 +48,7 @@ public class Servlet extends HttpServlet {
             String lastInput = String.valueOf(parameters.get("any"));
             boolean correctInput = Input.checkUserInput(lastInput);
             if (correctInput) {
-                // Enviar al siguiente intent
+                output = "Dato Ok";
             }
             else {
                 output = "Tu respuesta debe de ser un número entre 0 y 5, ambos incluidos.";

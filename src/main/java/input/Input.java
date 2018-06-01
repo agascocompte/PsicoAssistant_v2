@@ -18,7 +18,8 @@ public class Input {
     public static boolean checkUserInput(String input) {
         boolean isCorrectNumber = false;
 
-
+        if (input.length() == 1 && input.charAt(0) >= '0' && input.charAt(0) <= '5')
+            isCorrectNumber = true;
 
         return isCorrectNumber;
     }
