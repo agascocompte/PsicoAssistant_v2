@@ -64,12 +64,9 @@ public class Servlet extends HttpServlet {
         }
 
         // Prepare response
-        WebhookResponse response = WebhookResponse.newBuilder()
-                .setFulfillmentText(output)
-                .build();
-
         ResponseBridge bridge = new ResponseBridge();
         bridge.setFulfillmentText("HOLA");
+        bridge.addOutputContext(outputContext);
 
 
         //bridge.addOutputContext(outputContext);

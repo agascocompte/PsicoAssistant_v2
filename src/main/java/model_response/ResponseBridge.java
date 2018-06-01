@@ -17,15 +17,6 @@ public class ResponseBridge {
     private List<Context> outputContexts;
     private EventInput followupEventInput;
 
-    public ResponseBridge(WebhookResponse webhookResponse) {
-        fulfillmentText = webhookResponse.getFulfillmentText();
-        fulfillmentMessages = webhookResponse.getFulfillmentMessagesList();
-        source = webhookResponse.getSource();
-        payload = webhookResponse.getPayload();
-        outputContexts = null;
-        followupEventInput = webhookResponse.getFollowupEventInput();
-    }
-
     public ResponseBridge() {
         fulfillmentText = "";
         fulfillmentMessages = new ArrayList<>();
