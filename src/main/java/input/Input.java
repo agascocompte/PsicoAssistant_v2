@@ -7,8 +7,8 @@ public class Input {
     public static int calculateScore(Map<String, Integer> params) {
         int suma = 0;
 
-        for (Map.Entry entry : params.entrySet()) {
-            suma += (int) entry.getValue();
+        for (Map.Entry<String, Integer> entry : params.entrySet()) {
+            suma += entry.getValue();
         }
 
         return suma;

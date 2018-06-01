@@ -1,6 +1,5 @@
 package servlet;
 
-
 import com.google.gson.Gson;
 import input.Input;
 import model_request.RequestBridge;
@@ -23,9 +22,7 @@ import javax.servlet.http.HttpServletResponse;
         urlPatterns = {"/webhook"}
     )
 public class Servlet extends HttpServlet {
-
     private static final Logger logger = LoggerFactory.getLogger(Servlet.class);
-    private static final String FINAL_CONTEXT = "adios";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -42,7 +39,6 @@ public class Servlet extends HttpServlet {
         // Logic
         Map<String, Integer> parameters = request.getQueryResult().getParameters();
         String sesion = request.getSession();
-
         if (parameters.size() > 0) {
             String lastInput = String.valueOf(parameters.get("any"));
             lastInput = Input.isWritenNumber(lastInput);
