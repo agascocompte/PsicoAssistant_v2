@@ -23,4 +23,32 @@ public class Input {
 
         return isCorrectNumber;
     }
+
+    public static String isWritenNumber(String text) {
+        String answer = "";
+        text = text.toLowerCase();
+        switch(text) {
+            case "cero":
+                answer = "0";
+                break;
+            case "uno":
+                answer = "1";
+                break;
+            case "dos":
+                answer = "2";
+                break;
+            case "tres":
+                answer = "3";
+                break;
+            case "cuatro":
+                answer = "4";
+                break;
+            case "cinco":
+                answer = "5";
+                break;
+            default:
+                answer = text;
+        }
+        return answer;
+    }
 }

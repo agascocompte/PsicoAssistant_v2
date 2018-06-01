@@ -1,5 +1,6 @@
 package servlet;
 
+import com.google.cloud.dialogflow.v2.Context;
 import com.google.cloud.dialogflow.v2.WebhookResponse;
 import com.google.gson.Gson;
 import input.Input;
@@ -9,9 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -27,37 +25,50 @@ import javax.servlet.http.HttpServletResponse;
 public class Servlet extends HttpServlet {
 
     private static final Logger logger = LoggerFactory.getLogger(Servlet.class);
+    private static final String FINAL_CONTEXT = "adios";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         String output = "";
+        String contextName = "";
+        int lifespan = 1;
 
         // Read request
         Gson gson = new Gson();
         RequestBridge request = gson.fromJson(req.getReader(), RequestBridge.class);
 
+        // Logic
         Map<String, Integer> parameters = request.getQueryResult().getParameters();
 
         if (parameters.size() == 5) {
             int score = Input.calculateScore(parameters);
             output = "Tu puntuación final es de " + score;
+            contextName = FINAL_CONTEXT;
         }
         else {
             String lastInput = String.valueOf(parameters.get("any"));
+            lastInput = Input.isWritenNumber(lastInput);
             boolean correctInput = Input.checkUserInput(lastInput);
+
             if (correctInput) {
                 output = request.getQueryResult().getFulfillmentText();
+                contextName = "val" + (parameters.size() + 1);
             }
             else {
                 output = "Tu respuesta debe de ser un número entre 0 y 5, ambos incluidos.";
+                contextName = "val" + parameters.size();
             }
         }
 
         // Prepare response
         WebhookResponse response = WebhookResponse.newBuilder()
                 .setFulfillmentText(output)
+                .addOutputContexts(Context.newBuilder()
+                        .setName(contextName)
+                        .setLifespanCount(lifespan)
+                        .build())
                 .build();
 
         ResponseBridge bridge = new ResponseBridge();
