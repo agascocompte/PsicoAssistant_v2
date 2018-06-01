@@ -73,6 +73,7 @@ public class Servlet extends HttpServlet {
 
         ResponseBridge bridge = new ResponseBridge();
         bridge.setFulfillmentText(response.getFulfillmentText());
+        bridge.addAllOutputContexts(response.getOutputContextsList());
 
         String responseJson = gson.toJson(bridge);
 
