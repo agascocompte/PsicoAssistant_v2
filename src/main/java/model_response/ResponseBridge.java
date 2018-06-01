@@ -2,8 +2,6 @@ package model_response;
 
 import com.google.cloud.dialogflow.v2.EventInput;
 import com.google.cloud.dialogflow.v2.Intent;
-import com.google.cloud.dialogflow.v2.WebhookResponse;
-import com.google.protobuf.Message;
 import com.google.protobuf.Struct;
 
 import java.util.ArrayList;

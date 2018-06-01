@@ -41,11 +41,12 @@ public class Servlet extends HttpServlet {
 
         // Logic
         Map<String, Integer> parameters = request.getQueryResult().getParameters();
+        String sesion = request.getSession();
 
         if (parameters.size() == 5) {
             int score = Input.calculateScore(parameters);
             output = "Tu puntuación final es de " + score;
-            //contextName = FINAL_CONTEXT;
+            outputContext = new Context(sesion + "/contexts/adios", lifespan, parameters);
         }
         else {
             String lastInput = String.valueOf(parameters.get("any"));
@@ -54,18 +55,17 @@ public class Servlet extends HttpServlet {
 
             if (correctInput) {
                 output = request.getQueryResult().getFulfillmentText();
-                //contextName = "val" + (parameters.size() + 1);
+                outputContext = new Context(sesion + "/contexts/val" + (parameters.size() + 1), lifespan, parameters);
             }
             else {
                 output = "Tu respuesta debe de ser un número entre 0 y 5, ambos incluidos.";
-                String sesion = request.getSession();
                 outputContext = new Context(sesion + "/contexts/val" + parameters.size(), lifespan, parameters);
             }
         }
 
         // Prepare response
         ResponseBridge bridge = new ResponseBridge();
-        bridge.setFulfillmentText("HOLA");
+        bridge.setFulfillmentText(output);
         bridge.addOutputContext(outputContext);
 
 

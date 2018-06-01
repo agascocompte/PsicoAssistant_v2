@@ -1,6 +1,5 @@
 package input;
 
-import java.util.List;
 import java.util.Map;
 
 public class Input {
