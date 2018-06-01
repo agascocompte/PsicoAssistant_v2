@@ -43,19 +43,21 @@ public class Servlet extends HttpServlet {
         Map<String, Integer> parameters = request.getQueryResult().getParameters();
         String sesion = request.getSession();
 
-        if (parameters.size() == 5) {
-            int score = Input.calculateScore(parameters);
-            output = "Tu puntuación final es de " + score;
-            outputContext = new Context(sesion + "/contexts/adios", lifespan, parameters);
-        }
-        else {
+        if (parameters.size() > 0) {
             String lastInput = String.valueOf(parameters.get("any"));
             lastInput = Input.isWritenNumber(lastInput);
             boolean correctInput = Input.checkUserInput(lastInput);
 
             if (correctInput) {
-                output = request.getQueryResult().getFulfillmentText();
-                outputContext = new Context(sesion + "/contexts/val" + (parameters.size() + 1), lifespan, parameters);
+                if (parameters.size() == 5) {
+                    int score = Input.calculateScore(parameters);
+                    output = "Tu puntuación final es de " + score;
+                    outputContext = new Context(sesion + "/contexts/adios", lifespan, parameters);
+                }
+                else {
+                    output = request.getQueryResult().getFulfillmentText();
+                    outputContext = new Context(sesion + "/contexts/val" + (parameters.size() + 1), lifespan, parameters);
+                }
             }
             else {
                 output = "Tu respuesta debe de ser un número entre 0 y 5, ambos incluidos.";
@@ -67,7 +69,6 @@ public class Servlet extends HttpServlet {
         ResponseBridge bridge = new ResponseBridge();
         bridge.setFulfillmentText(output);
         bridge.addOutputContext(outputContext);
-
 
         // Send response
         String responseJson = gson.toJson(bridge);
