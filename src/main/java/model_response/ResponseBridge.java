@@ -1,6 +1,5 @@
 package model_response;
 
-import com.google.cloud.dialogflow.v2.Context;
 import com.google.cloud.dialogflow.v2.EventInput;
 import com.google.cloud.dialogflow.v2.Intent;
 import com.google.cloud.dialogflow.v2.WebhookResponse;
@@ -23,7 +22,7 @@ public class ResponseBridge {
         fulfillmentMessages = webhookResponse.getFulfillmentMessagesList();
         source = webhookResponse.getSource();
         payload = webhookResponse.getPayload();
-        outputContexts = webhookResponse.getOutputContextsList();
+        outputContexts = null;
         followupEventInput = webhookResponse.getFollowupEventInput();
     }
 

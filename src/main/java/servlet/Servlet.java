@@ -1,10 +1,11 @@
 package servlet;
 
-import com.google.cloud.dialogflow.v2.Context;
+
 import com.google.cloud.dialogflow.v2.WebhookResponse;
 import com.google.gson.Gson;
 import input.Input;
 import model_request.RequestBridge;
+import model_response.Context;
 import model_response.ResponseBridge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,20 +66,17 @@ public class Servlet extends HttpServlet {
         // Prepare response
         WebhookResponse response = WebhookResponse.newBuilder()
                 .setFulfillmentText(output)
-                .addOutputContexts(Context.newBuilder()
-                        .setName(contextName)
-                        .setLifespanCount(lifespan)
-                        .build())
                 .build();
 
         ResponseBridge bridge = new ResponseBridge();
         bridge.setFulfillmentText(response.getFulfillmentText());
-        bridge.addAllOutputContexts(response.getOutputContextsList());
 
-        String responseJson = gson.toJson(bridge);
+        Context outputContext = new Context(contextName, lifespan, parameters);
+        bridge.addOutputContext(outputContext);
 
 
         // Send response
+        String responseJson = gson.toJson(bridge);
         resp.setContentType("application/json");
         resp.getWriter().write(responseJson);
     }
