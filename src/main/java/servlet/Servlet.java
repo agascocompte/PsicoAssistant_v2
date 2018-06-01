@@ -33,8 +33,8 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
 
         String output = "";
-        String contextName = "";
         int lifespan = 1;
+        Context outputContext = null;
 
         // Read request
         Gson gson = new Gson();
@@ -46,7 +46,7 @@ public class Servlet extends HttpServlet {
         if (parameters.size() == 5) {
             int score = Input.calculateScore(parameters);
             output = "Tu puntuación final es de " + score;
-            contextName = FINAL_CONTEXT;
+            //contextName = FINAL_CONTEXT;
         }
         else {
             String lastInput = String.valueOf(parameters.get("any"));
@@ -55,11 +55,11 @@ public class Servlet extends HttpServlet {
 
             if (correctInput) {
                 output = request.getQueryResult().getFulfillmentText();
-                contextName = "val" + (parameters.size() + 1);
+                //contextName = "val" + (parameters.size() + 1);
             }
             else {
                 output = "Tu respuesta debe de ser un número entre 0 y 5, ambos incluidos.";
-                contextName = "val" + parameters.size();
+                outputContext = new Context("val" + parameters.size(), lifespan, parameters);
             }
         }
 
@@ -69,11 +69,10 @@ public class Servlet extends HttpServlet {
                 .build();
 
         ResponseBridge bridge = new ResponseBridge();
-        bridge.setFulfillmentText(response.getFulfillmentText());
+        bridge.setFulfillmentText("HOLA");
 
-        Context outputContext = new Context(contextName, lifespan, parameters);
-        bridge.addOutputContext(outputContext);
 
+        //bridge.addOutputContext(outputContext);
 
         // Send response
         String responseJson = gson.toJson(bridge);
