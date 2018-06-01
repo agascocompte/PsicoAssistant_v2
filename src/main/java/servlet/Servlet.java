@@ -1,7 +1,6 @@
 package servlet;
 
 
-import com.google.cloud.dialogflow.v2.WebhookResponse;
 import com.google.gson.Gson;
 import input.Input;
 import model_request.RequestBridge;
@@ -59,7 +58,8 @@ public class Servlet extends HttpServlet {
             }
             else {
                 output = "Tu respuesta debe de ser un número entre 0 y 5, ambos incluidos.";
-                outputContext = new Context("val" + parameters.size(), lifespan, parameters);
+                String sesion = request.getSession();
+                outputContext = new Context(sesion + "/contexts/val" + parameters.size(), lifespan, parameters);
             }
         }
 
@@ -68,8 +68,6 @@ public class Servlet extends HttpServlet {
         bridge.setFulfillmentText("HOLA");
         bridge.addOutputContext(outputContext);
 
-
-        //bridge.addOutputContext(outputContext);
 
         // Send response
         String responseJson = gson.toJson(bridge);
