@@ -46,8 +46,9 @@ public class Servlet extends HttpServlet {
 
             if (correctInput) {
                 if (parameters.size() == 5) {
-                    int score = Input.calculateScore(parameters);
-                    output = "Tu puntuación final es de " + score;
+                    //int score = Input.calculateScore(parameters);
+                    //output = "Tu puntuación final es de " + score;
+                    output = "Los parámetros en este punto son: " + parameters.get("any") + " " + parameters.get("valor1") + " " + parameters.get("valor2") + " " + parameters.get("valor3") + " " + parameters.get("valor4");
                     outputContext = new Context(sesion + "/contexts/adios", lifespan, parameters);
                 }
                 else {
