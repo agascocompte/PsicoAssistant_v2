@@ -20,7 +20,7 @@ public class asd {
             else
                 suma += entry.getValue();
         }
-
+        System.out.println(params.get("any").getClass());
         System.out.println(suma);
     }
 }
