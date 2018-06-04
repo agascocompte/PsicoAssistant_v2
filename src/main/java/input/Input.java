@@ -8,7 +8,10 @@ public class Input {
         int suma = 0;
 
         for (Map.Entry<String, Integer> entry : params.entrySet()) {
-            suma += Integer.valueOf(entry.getValue());
+            if (entry.getKey().equals("any"))
+                suma += Integer.valueOf(entry.getValue());
+            else
+                suma += entry.getValue();
         }
 
         return suma;
