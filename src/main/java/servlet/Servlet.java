@@ -52,7 +52,7 @@ public class Servlet extends HttpServlet {
                 }
                 else {
                     output = request.getQueryResult().getFulfillmentText();
-                    parameters.put("any", "");
+                    parameters.put("any", parameters.get("valor" + (parameters.size() - 1)));
                     outputContext = new Context(sesion + "/contexts/val" + (parameters.size() + 1), lifespan, parameters);
                 }
             }
