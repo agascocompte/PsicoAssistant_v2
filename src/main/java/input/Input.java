@@ -5,13 +5,13 @@ import java.util.Map;
 public class Input {
 
     public static int calculateScore(Map<String, String> params) {
-        int suma = 0;
+        int sum = 0;
 
         for (Map.Entry<String, String> entry : params.entrySet()) {
-            suma += Integer.valueOf(entry.getValue());
+            sum += Integer.valueOf(entry.getValue());
         }
 
-        return suma;
+        return sum * 4;
     }
 
     public static boolean checkUserInput(String input) {
