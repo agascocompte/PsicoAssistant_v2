@@ -52,12 +52,12 @@ public class Servlet extends HttpServlet {
                 }
                 else {
                     output = request.getQueryResult().getFulfillmentText();
-                    parameters.put("any", parameters.get("valor" + (parameters.size() - 1)));
                     outputContext = new Context(sesion + "/contexts/val" + (parameters.size() + 1), lifespan, parameters);
                 }
             }
             else {
                 output = "Tu respuesta debe de ser un número entre 0 y 5, ambos incluidos.";
+                parameters.put("any", parameters.get("valor" + (parameters.size() - 1)));
                 outputContext = new Context(sesion + "/contexts/val" + parameters.size(), lifespan, parameters);
             }
         }
