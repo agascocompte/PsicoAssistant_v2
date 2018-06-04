@@ -5,7 +5,7 @@ import java.util.Map;
 public class Context {
     private String name;
     private int lifespanCount;
-    private Map<String, Integer> parameters;
+    private Map<String, String> parameters;
 
     public Context() {
         name = "";
@@ -13,7 +13,7 @@ public class Context {
         parameters = null;
     }
 
-    public Context(String name, int lifespan, Map<String, Integer> parameters) {
+    public Context(String name, int lifespan, Map<String, String> parameters) {
         this.name = name;
         this.lifespanCount = lifespan;
         this.parameters = parameters;
@@ -35,11 +35,11 @@ public class Context {
         return lifespanCount;
     }
 
-    public void setParameters(Map<String, Integer> parameters) {
+    public void setParameters(Map<String, String> parameters) {
         this.parameters = parameters;
     }
 
-    public void addParameter(String key, Integer value) {
+    public void addParameter(String key, String value) {
         parameters.put(key, value);
     }
 }

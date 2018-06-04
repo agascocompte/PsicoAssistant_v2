@@ -37,7 +37,7 @@ public class Servlet extends HttpServlet {
         RequestBridge request = gson.fromJson(req.getReader(), RequestBridge.class);
 
         // Logic
-        Map<String, Integer> parameters = request.getQueryResult().getParameters();
+        Map<String, String> parameters = request.getQueryResult().getParameters();
         String sesion = request.getSession();
         if (parameters.size() > 0) {
             String lastInput = String.valueOf(parameters.get("any"));
@@ -46,10 +46,10 @@ public class Servlet extends HttpServlet {
 
             if (correctInput) {
                 if (parameters.size() == 5) {
-                    //int score = Input.calculateScore(parameters);
-                    //output = "Tu puntuación final es de " + score;
+                    int score = Input.calculateScore(parameters);
+                    output = "Tu puntuación final es de " + score;
                     //parameters.get("any").getClass() + " ";
-                    output = "Los parámetros en este punto son: " +  parameters.get("valor1").getClass();// + " " + parameters.get("valor2").getClass() + " " + parameters.get("valor3").getClass() + " " + parameters.get("valor4").getClass();
+                    //output = "Los parámetros en este punto son: " +  parameters.get("valor1").getClass();// + " " + parameters.get("valor2").getClass() + " " + parameters.get("valor3").getClass() + " " + parameters.get("valor4").getClass();
                     outputContext = new Context(sesion + "/contexts/adios", lifespan, parameters);
                 }
                 else {

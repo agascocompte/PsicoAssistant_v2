@@ -4,12 +4,11 @@ import java.util.Map;
 
 public class Input {
 
-    public static int calculateScore(Map<String, Integer> params) {
+    public static int calculateScore(Map<String, String> params) {
         int suma = 0;
 
-        for (Map.Entry<String, Integer> entry : params.entrySet()) {
-            if (!(entry.getKey().equals("any")))
-                suma += Integer.valueOf(entry.getValue());
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            suma += Integer.valueOf(entry.getValue());
         }
 
         return suma;
